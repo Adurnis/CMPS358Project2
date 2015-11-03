@@ -32,11 +32,13 @@
             this.StartHost = new System.Windows.Forms.Button();
             this.StartPrompt1 = new System.Windows.Forms.Label();
             this.StartPrompt2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // StartClient
             // 
-            this.StartClient.Location = new System.Drawing.Point(23, 77);
+            this.StartClient.Location = new System.Drawing.Point(23, 131);
             this.StartClient.Name = "StartClient";
             this.StartClient.Size = new System.Drawing.Size(328, 23);
             this.StartClient.TabIndex = 0;
@@ -46,7 +48,7 @@
             // 
             // StartHost
             // 
-            this.StartHost.Location = new System.Drawing.Point(23, 115);
+            this.StartHost.Location = new System.Drawing.Point(23, 160);
             this.StartHost.Name = "StartHost";
             this.StartHost.Size = new System.Drawing.Size(328, 23);
             this.StartHost.TabIndex = 1;
@@ -70,15 +72,34 @@
             this.StartPrompt2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartPrompt2.Location = new System.Drawing.Point(20, 47);
             this.StartPrompt2.Name = "StartPrompt2";
-            this.StartPrompt2.Size = new System.Drawing.Size(282, 17);
+            this.StartPrompt2.Size = new System.Drawing.Size(342, 17);
             this.StartPrompt2.TabIndex = 3;
-            this.StartPrompt2.Text = "To connect to a host click \"Start as Client\".";
+            this.StartPrompt2.Text = "To connect to a host: enter an ip address in the box,";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(67, 105);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(236, 20);
+            this.textBox1.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(93, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(175, 17);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "and click \"Start As Client\".";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 163);
+            this.ClientSize = new System.Drawing.Size(382, 195);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.StartPrompt2);
             this.Controls.Add(this.StartPrompt1);
             this.Controls.Add(this.StartHost);
@@ -96,6 +117,8 @@
         private System.Windows.Forms.Button StartHost;
         private System.Windows.Forms.Label StartPrompt1;
         private System.Windows.Forms.Label StartPrompt2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

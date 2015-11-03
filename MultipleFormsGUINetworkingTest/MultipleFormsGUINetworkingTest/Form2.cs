@@ -12,30 +12,34 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 
+public enum gameState { Start, PlacingShips, ReadyToPlay, YourTurn, OppenentTurn, End};
+
 namespace MultipleFormsGUINetworkingTest
 {
     public partial class Form2 : Form
     {
+        private gameState State = gameState.Start;
         private TcpClient client;
         private StreamReader reader;
         private StreamWriter writer;
-        private String buttonTextReceived;
+        private String TextReceived;
         private List<Button> buttons;
 
-        public Form2(String type)
+        public Form2(String type, String ipAddress)
         {
             InitializeComponent();
             this.button1.Click += new System.EventHandler(this.sendShot);
-            this.button2.Click += new System.EventHandler(this.sendShot);
+            this.button2.Click += this.sendShot;
             this.button3.Click += this.sendShot;
 
             buttons = this.Controls.OfType<Button>().ToList();
 
-            foreach (Button b in buttons)
-            {
-                MessageBox.Show(b.Text);
-            }
+            //foreach (Button b in buttons)
+            //{
+            //    MessageBox.Show(b.Text);
+            //}
 
+            //set up this connection as a host waiting for someone to connect
             if (type == "Host")
             {
                 TcpListener listener = new TcpListener(IPAddress.Any, 51111);
@@ -44,14 +48,18 @@ namespace MultipleFormsGUINetworkingTest
                 reader = new StreamReader(client.GetStream());
                 writer = new StreamWriter(client.GetStream());
                 writer.AutoFlush = true;
-
+                 
                 backgroundWorker1.RunWorkerAsync();     //start receiving data in the background
+
+                this.Text = "Host";
+                State = gameState.OppenentTurn;
             }
 
+            //set up this connecion as a client connecting to a host via their ip address
             if (type == "Client")
             {
                 client = new TcpClient();
-                IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse("10.88.69.128"), 51111);
+                IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse(ipAddress), 51111);
 
                 try
                 {
@@ -64,26 +72,41 @@ namespace MultipleFormsGUINetworkingTest
                         writer.AutoFlush = true;
 
                         backgroundWorker1.RunWorkerAsync(); //start receiving data in the background
+                        this.Text = "Client";
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                State = gameState.YourTurn;
             }
+
+            //-----*&*&$%^$&#$^@#%$@#^&%^^$%^&^%$#@!@#$^&*()(*&^%$#@!!@#$%^*()(*&^%$#-----
+            //State = gameState.PlacingShips; //logic for placing ships will come "here"
+            //after placing ships, radomly decide who goes first and set the states to the proper values
         }
 
+        //send the "shot" or button click information 
         public void sendShot(object sender, EventArgs e)
         {
-            Button button = sender as Button;
-            button.BackColor = Color.Red;
-            MessageBox.Show(button.Text);
-            dataSender(button.Text);
+            if(State == gameState.YourTurn)
+            {
+                Button button = sender as Button;
+                button.BackColor = Color.Red;
+                dataSender(button.Text);
+                State = gameState.OppenentTurn;
+            }
+            else
+            {
+                MessageBox.Show("It is not your turn!");
+            }
         }
 
         private async void dataSender(String ToSend)
         {
             await writer.WriteLineAsync(ToSend);
+            await writer.WriteLineAsync("YourTurn");
         }
 
         private void backgroundWorkder1_dowork(object sender, DoWorkEventArgs e)
@@ -92,22 +115,34 @@ namespace MultipleFormsGUINetworkingTest
             {
                 try
                 {
-                    buttonTextReceived = reader.ReadLine();
-                    foreach (Button b in buttons)
-                    {
-                        if (b.Name.ToString() == buttonTextReceived)
-                        {
+                    TextReceived = reader.ReadLine();
+                    if (TextReceived == "YourTurn")
+                        State = gameState.YourTurn;
 
-                            b.BackColor = Color.Blue;
+                    if(State == gameState.OppenentTurn)
+                    {
+                        foreach (Button b in buttons)
+                        {
+                            if (b.Name.ToString() == TextReceived)
+                            {
+                                b.BackColor = Color.Blue;
+                            }
                         }
                     }
-                    buttonTextReceived = "";
+                    
+                    TextReceived = "";
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            State = gameState.End;
+            Application.Exit();
         }
     }
 }

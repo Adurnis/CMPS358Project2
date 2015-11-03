@@ -19,13 +19,20 @@ namespace MultipleFormsGUINetworkingTest
 
         private void StartClient_Click(object sender, EventArgs e)
         {
-            Form2 fm = new Form2("Client");
-            fm.Show();
+            if(textBox1.Text == "")
+            {
+                MessageBox.Show("Enter an IP address to connect");
+            }
+            else
+            {
+                Form2 fm = new Form2("Client", textBox1.Text);
+                fm.Show();
+            }
         }
 
         private void StartHost_Click(object sender, EventArgs e)
         {
-            Form2 fm = new Form2("Host");
+            Form2 fm = new Form2("Host", "");
             fm.Show();
         }
     }
