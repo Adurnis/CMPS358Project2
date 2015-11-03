@@ -1,0 +1,10 @@
+c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\bin\Debug\MultipleFormsGUINetworkingTest.exe.config
+c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\bin\Debug\MultipleFormsGUINetworkingTest.exe
+c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\bin\Debug\MultipleFormsGUINetworkingTest.pdb
+c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.csprojResolveAssemblyReference.cache
+c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.Form1.resources
+c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.Form2.resources
+c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.Properties.Resources.resources
+c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.csproj.GenerateResource.Cache
+c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.exe
+c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.pdb

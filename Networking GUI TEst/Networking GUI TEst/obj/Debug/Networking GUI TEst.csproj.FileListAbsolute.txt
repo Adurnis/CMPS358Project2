@@ -1,0 +1,9 @@
+c:\users\ajw8885\documents\visual studio 2012\Projects\Networking GUI TEst\Networking GUI TEst\bin\Debug\Networking GUI TEst.exe.config
+c:\users\ajw8885\documents\visual studio 2012\Projects\Networking GUI TEst\Networking GUI TEst\obj\Debug\Networking GUI TEst.csprojResolveAssemblyReference.cache
+c:\users\ajw8885\documents\visual studio 2012\Projects\Networking GUI TEst\Networking GUI TEst\obj\Debug\Networking_GUI_TEst.Properties.Resources.resources
+c:\users\ajw8885\documents\visual studio 2012\Projects\Networking GUI TEst\Networking GUI TEst\obj\Debug\Networking GUI TEst.csproj.GenerateResource.Cache
+C:\Users\ajw8885\Documents\Visual Studio 2012\Projects\Networking GUI TEst\Networking GUI TEst\obj\Debug\Networking_GUI_TEst.Form1.resources
+c:\users\ajw8885\documents\visual studio 2012\Projects\Networking GUI TEst\Networking GUI TEst\bin\Debug\Networking GUI TEst.exe
+c:\users\ajw8885\documents\visual studio 2012\Projects\Networking GUI TEst\Networking GUI TEst\bin\Debug\Networking GUI TEst.pdb
+c:\users\ajw8885\documents\visual studio 2012\Projects\Networking GUI TEst\Networking GUI TEst\obj\Debug\Networking GUI TEst.exe
+c:\users\ajw8885\documents\visual studio 2012\Projects\Networking GUI TEst\Networking GUI TEst\obj\Debug\Networking GUI TEst.pdb
