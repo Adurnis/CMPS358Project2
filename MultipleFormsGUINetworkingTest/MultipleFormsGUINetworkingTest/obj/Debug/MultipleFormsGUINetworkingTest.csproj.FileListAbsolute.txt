@@ -8,3 +8,6 @@ c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkin
 c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.csproj.GenerateResource.Cache
 c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.exe
 c:\users\ajw8885\documents\visual studio 2012\Projects\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.pdb
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\bin\Debug\MultipleFormsGUINetworkingTest.exe.config
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.exe
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\MultipleFormsGUINetworkingTest\MultipleFormsGUINetworkingTest\obj\Debug\MultipleFormsGUINetworkingTest.pdb

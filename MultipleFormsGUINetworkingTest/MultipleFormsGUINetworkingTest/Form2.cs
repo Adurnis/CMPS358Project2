@@ -51,7 +51,7 @@ namespace MultipleFormsGUINetworkingTest
             if (type == "Client")
             {
                 client = new TcpClient();
-                IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 51111);
+                IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse("10.88.69.128"), 51111);
 
                 try
                 {
