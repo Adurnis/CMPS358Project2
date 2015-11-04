@@ -24,6 +24,7 @@ namespace MultipleFormsGUINetworkingTest
         private StreamWriter writer;
         private String TextReceived;
         private List<Button> buttons;
+        private List<Button> ChosenButtons = new List<Button>();
 
         public Form2(String type, String ipAddress)
         {
@@ -48,15 +49,15 @@ namespace MultipleFormsGUINetworkingTest
                 reader = new StreamReader(client.GetStream());
                 writer = new StreamWriter(client.GetStream());
                 writer.AutoFlush = true;
-                 
+
                 backgroundWorker1.RunWorkerAsync();     //start receiving data in the background
 
-                this.Text = "Host";
+                this.Text = "Salvo Game Host";
                 State = gameState.OppenentTurn;
             }
 
             //set up this connecion as a client connecting to a host via their ip address
-            if (type == "Client")
+            if (type == "Salvo Game Client")
             {
                 client = new TcpClient();
                 IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse(ipAddress), 51111);
@@ -92,10 +93,19 @@ namespace MultipleFormsGUINetworkingTest
         {
             if(State == gameState.YourTurn)
             {
+
                 Button button = sender as Button;
-                button.BackColor = Color.Red;
-                dataSender(button.Text);
-                State = gameState.OppenentTurn;
+                //add the selected button to the list of locations the user has fired at already
+                //this will protect against the user wasting a turn by shooting somewhere they already have
+                if (ChosenButtons.Contains(button))
+                    MessageBox.Show("You have alredy fired at " + button.Text);
+                else
+                {
+                    ChosenButtons.Add(button);
+                    button.BackColor = Color.Red;
+                    dataSender(button.Text);
+                    State = gameState.OppenentTurn;
+                }
             }
             else
             {
