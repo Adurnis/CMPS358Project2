@@ -457,7 +457,6 @@ namespace Project_2
             if(shipList.Contains(buttonDic[buffer]))
             {
                 result = "hit";
-
             }
             else
             {

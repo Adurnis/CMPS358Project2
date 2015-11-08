@@ -7,3 +7,12 @@ C:\Users\pmh7685\Documents\Visual Studio 2013\Projects\Project 2\Project 2\obj\D
 C:\Users\pmh7685\Documents\Visual Studio 2013\Projects\Project 2\Project 2\obj\Debug\Project 2.csproj.GenerateResource.Cache
 C:\Users\pmh7685\Documents\Visual Studio 2013\Projects\Project 2\Project 2\obj\Debug\Project 2.exe
 C:\Users\pmh7685\Documents\Visual Studio 2013\Projects\Project 2\Project 2\obj\Debug\Project 2.pdb
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Project 2\Project 2\bin\Debug\Project 2.exe.config
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Project 2\Project 2\obj\Debug\Project 2.exe
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Project 2\Project 2\obj\Debug\Project 2.pdb
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Project 2\Project 2\bin\Debug\Project 2.exe
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Project 2\Project 2\bin\Debug\Project 2.pdb
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Project 2\Project 2\obj\Debug\Project 2.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Project 2\Project 2\obj\Debug\Project_2.Form1.resources
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Project 2\Project 2\obj\Debug\Project_2.Properties.Resources.resources
+C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Project 2\Project 2\obj\Debug\Project 2.csproj.GenerateResource.Cache

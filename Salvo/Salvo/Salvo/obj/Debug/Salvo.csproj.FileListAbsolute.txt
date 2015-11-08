@@ -1,2 +1,0 @@
-C:\Users\administratorforpc\Documents\CMPS358Project2-master\CMPS358Project2-master\Salvo\Salvo\bin\Debug\Salvo.exe.config
-C:\Users\Andrew\Downloads\Salvo\Salvo\Salvo\bin\Debug\Salvo.exe.config
