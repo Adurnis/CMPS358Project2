@@ -57,7 +57,7 @@ namespace MultipleFormsGUINetworkingTest
             }
 
             //set up this connecion as a client connecting to a host via their ip address
-            if (type == "Salvo Game Client")
+            if (type == "Client")
             {
                 client = new TcpClient();
                 IPEndPoint IpEnd = new IPEndPoint(IPAddress.Parse(ipAddress), 51111);
@@ -73,7 +73,7 @@ namespace MultipleFormsGUINetworkingTest
                         writer.AutoFlush = true;
 
                         backgroundWorker1.RunWorkerAsync(); //start receiving data in the background
-                        this.Text = "Client";
+                        this.Text = "Salvo Game Client";
                     }
                 }
                 catch (Exception ex)

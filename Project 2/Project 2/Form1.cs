@@ -12,7 +12,6 @@ namespace Project_2
 {
     public partial class Form1 : Form
     {
-        
         bool placingShip2 = true, placingShip3 = false, placingShip4 = false, placingShip5 = false;
         bool vertical = false;
         bool yourTurn = true;
