@@ -12,7 +12,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.IO;
 
-public enum gameState { Start, PlacingShips, ReadyToPlay, YourTurn, OppenentTurn, End };
+public enum gameState { Start, PlacingShips, ReadyToPlay, YourTurn, OpponentTurn, End };
 
 namespace Salvo
 {
@@ -26,12 +26,17 @@ namespace Salvo
         Dictionary<Button, string> opponentDic = new Dictionary<Button, string>();
         List<Button> fireList = new List<Button>();
         List<Button> shipList = new List<Button>();
+        List<Button> ship2List = new List<Button>();
+        List<Button> ship3List = new List<Button>();
+        List<Button> ship4List = new List<Button>();
+        List<Button> ship5List = new List<Button>();
         gameState state = gameState.Start;
         private TcpClient client;
         private StreamReader reader;
         private StreamWriter writer;
         private String TextReceived;
         Button lastShot;
+        int score = 0;
 
         //initializer function to start the game
         public SalvoGame(string type, string ipAddress)
@@ -239,227 +244,7 @@ namespace Salvo
             opponentDic.Add(J9, "J9");
             opponentDic.Add(J10, "J10");
 
-            //button clicks for the 'A' column when the player is placing their ships
-            this.Player_A1.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_A2.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_A3.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_A4.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_A5.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_A6.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_A7.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_A8.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_A9.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_A10.Click += new System.EventHandler(PlaceShips_Clicks);
-            //button clicks for the 'B' column when the player is placing their ships
-            this.Player_B1.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_B2.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_B3.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_B4.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_B5.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_B6.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_B7.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_B8.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_B9.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_B10.Click += new System.EventHandler(PlaceShips_Clicks);
-            //button clicks for the 'C' column when the player is placing their ships
-            this.Player_C1.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_C2.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_C3.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_C4.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_C5.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_C6.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_C7.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_C8.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_C9.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_C10.Click += new System.EventHandler(PlaceShips_Clicks);
-            //button clicks for the 'D' column when the player is placing their ships
-            this.Player_D1.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_D2.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_D3.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_D4.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_D5.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_D6.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_D7.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_D8.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_D9.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_D10.Click += new System.EventHandler(PlaceShips_Clicks);
-            //button clicks for the 'E' column when the player is placing their ships
-            this.Player_E1.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_E2.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_E3.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_E4.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_E5.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_E6.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_E7.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_E8.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_E9.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_E10.Click += new System.EventHandler(PlaceShips_Clicks);
-            //button clicks for the 'F' column when the player is placing their ships
-            this.Player_F1.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_F2.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_F3.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_F4.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_F5.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_F6.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_F7.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_F8.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_F9.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_F10.Click += new System.EventHandler(PlaceShips_Clicks);
-            //button clicks for the 'G' column when the player is placing their ships
-            this.Player_G1.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_G2.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_G3.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_G4.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_G5.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_G6.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_G7.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_G8.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_G9.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_G10.Click += new System.EventHandler(PlaceShips_Clicks);
-            //button clicks for the 'H' column when the player is placing their ships
-            this.Player_H1.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_H2.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_H3.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_H4.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_H5.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_H6.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_H7.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_H8.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_H9.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_H10.Click += new System.EventHandler(PlaceShips_Clicks);
-            //button clicks for the 'I' column when the player is placing their ships
-            this.Player_I1.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_I2.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_I3.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_I4.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_I5.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_I6.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_I7.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_I8.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_I9.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_I10.Click += new System.EventHandler(PlaceShips_Clicks);
-            //button clicks for the 'J' column when the player is placing their ships
-            this.Player_J1.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_J2.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_J3.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_J4.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_J5.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_J6.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_J7.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_J8.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_J9.Click += new System.EventHandler(PlaceShips_Clicks);
-            this.Player_J10.Click += new System.EventHandler(PlaceShips_Clicks);
-
-            //button click handlers for the 'A' column of where the player fires at the enemy ships
-            this.A1.Click += new System.EventHandler(send_Shot);
-            this.A2.Click += new System.EventHandler(send_Shot);
-            this.A3.Click += new System.EventHandler(send_Shot);
-            this.A4.Click += new System.EventHandler(send_Shot);
-            this.A5.Click += new System.EventHandler(send_Shot);
-            this.A6.Click += new System.EventHandler(send_Shot);
-            this.A7.Click += new System.EventHandler(send_Shot);
-            this.A8.Click += new System.EventHandler(send_Shot);
-            this.A9.Click += new System.EventHandler(send_Shot);
-            this.A10.Click += new System.EventHandler(send_Shot);
-            //button click handlers for the 'B' column of where the player fires at the enemy ships
-            this.B1.Click += new System.EventHandler(send_Shot);
-            this.B2.Click += new System.EventHandler(send_Shot);
-            this.B3.Click += new System.EventHandler(send_Shot);
-            this.B4.Click += new System.EventHandler(send_Shot);
-            this.B5.Click += new System.EventHandler(send_Shot);
-            this.B6.Click += new System.EventHandler(send_Shot);
-            this.B7.Click += new System.EventHandler(send_Shot);
-            this.B8.Click += new System.EventHandler(send_Shot);
-            this.B9.Click += new System.EventHandler(send_Shot);
-            this.B10.Click += new System.EventHandler(send_Shot);
-            //button click handlers for the 'C' column of where the player fires at the enemy ships
-            this.C1.Click += new System.EventHandler(send_Shot);
-            this.C2.Click += new System.EventHandler(send_Shot);
-            this.C3.Click += new System.EventHandler(send_Shot);
-            this.C4.Click += new System.EventHandler(send_Shot);
-            this.C5.Click += new System.EventHandler(send_Shot);
-            this.C6.Click += new System.EventHandler(send_Shot);
-            this.C7.Click += new System.EventHandler(send_Shot);
-            this.C8.Click += new System.EventHandler(send_Shot);
-            this.C9.Click += new System.EventHandler(send_Shot);
-            this.C10.Click += new System.EventHandler(send_Shot);
-            //button click handlers for the 'D' column of where the player fires at the enemy ships
-            this.D1.Click += new System.EventHandler(send_Shot);
-            this.D2.Click += new System.EventHandler(send_Shot);
-            this.D3.Click += new System.EventHandler(send_Shot);
-            this.D4.Click += new System.EventHandler(send_Shot);
-            this.D5.Click += new System.EventHandler(send_Shot);
-            this.D6.Click += new System.EventHandler(send_Shot);
-            this.D7.Click += new System.EventHandler(send_Shot);
-            this.D8.Click += new System.EventHandler(send_Shot);
-            this.D9.Click += new System.EventHandler(send_Shot);
-            this.D10.Click += new System.EventHandler(send_Shot);
-            //button click handlers for the 'E' column of where the player fires at the enemy ships
-            this.E1.Click += new System.EventHandler(send_Shot);
-            this.E2.Click += new System.EventHandler(send_Shot);
-            this.E3.Click += new System.EventHandler(send_Shot);
-            this.E4.Click += new System.EventHandler(send_Shot);
-            this.E5.Click += new System.EventHandler(send_Shot);
-            this.E6.Click += new System.EventHandler(send_Shot);
-            this.E7.Click += new System.EventHandler(send_Shot);
-            this.E8.Click += new System.EventHandler(send_Shot);
-            this.E9.Click += new System.EventHandler(send_Shot);
-            this.E10.Click += new System.EventHandler(send_Shot);
-            //button click handlers for the 'F' column of where the player fires at the enemy ships
-            this.F1.Click += new System.EventHandler(send_Shot);
-            this.F2.Click += new System.EventHandler(send_Shot);
-            this.F3.Click += new System.EventHandler(send_Shot);
-            this.F4.Click += new System.EventHandler(send_Shot);
-            this.F5.Click += new System.EventHandler(send_Shot);
-            this.F6.Click += new System.EventHandler(send_Shot);
-            this.F7.Click += new System.EventHandler(send_Shot);
-            this.F8.Click += new System.EventHandler(send_Shot);
-            this.F9.Click += new System.EventHandler(send_Shot);
-            this.F10.Click += new System.EventHandler(send_Shot);
-            //button click handlers for the 'G' column of where the player fires at the enemy ships
-            this.G1.Click += new System.EventHandler(send_Shot);
-            this.G2.Click += new System.EventHandler(send_Shot);
-            this.G3.Click += new System.EventHandler(send_Shot);
-            this.G4.Click += new System.EventHandler(send_Shot);
-            this.G5.Click += new System.EventHandler(send_Shot);
-            this.G6.Click += new System.EventHandler(send_Shot);
-            this.G7.Click += new System.EventHandler(send_Shot);
-            this.G8.Click += new System.EventHandler(send_Shot);
-            this.G9.Click += new System.EventHandler(send_Shot);
-            this.G10.Click += new System.EventHandler(send_Shot);
-            //button click handlers for the 'H' column of where the player fires at the enemy ships
-            this.H1.Click += new System.EventHandler(send_Shot);
-            this.H2.Click += new System.EventHandler(send_Shot);
-            this.H3.Click += new System.EventHandler(send_Shot);
-            this.H4.Click += new System.EventHandler(send_Shot);
-            this.H5.Click += new System.EventHandler(send_Shot);
-            this.H6.Click += new System.EventHandler(send_Shot);
-            this.H7.Click += new System.EventHandler(send_Shot);
-            this.H8.Click += new System.EventHandler(send_Shot);
-            this.H9.Click += new System.EventHandler(send_Shot);
-            this.H10.Click += new System.EventHandler(send_Shot);
-            //button click handlers for the 'I' column of where the player fires at the enemy ships
-            this.I1.Click += new System.EventHandler(send_Shot);
-            this.I2.Click += new System.EventHandler(send_Shot);
-            this.I3.Click += new System.EventHandler(send_Shot);
-            this.I4.Click += new System.EventHandler(send_Shot);
-            this.I5.Click += new System.EventHandler(send_Shot);
-            this.I6.Click += new System.EventHandler(send_Shot);
-            this.I7.Click += new System.EventHandler(send_Shot);
-            this.I8.Click += new System.EventHandler(send_Shot);
-            this.I9.Click += new System.EventHandler(send_Shot);
-            this.I10.Click += new System.EventHandler(send_Shot);
-            //button click handlers for the 'J' column of where the player fires at the enemy ships
-            this.J1.Click += new System.EventHandler(send_Shot);
-            this.J2.Click += new System.EventHandler(send_Shot);
-            this.J3.Click += new System.EventHandler(send_Shot);
-            this.J4.Click += new System.EventHandler(send_Shot);
-            this.J5.Click += new System.EventHandler(send_Shot);
-            this.J6.Click += new System.EventHandler(send_Shot);
-            this.J7.Click += new System.EventHandler(send_Shot);
-            this.J8.Click += new System.EventHandler(send_Shot);
-            this.J9.Click += new System.EventHandler(send_Shot);
-            this.J10.Click += new System.EventHandler(send_Shot);
+           
 
             //--------------------------------------------------------------------------------
             //start the listener for the host computer and accept a client from any ipAddress
@@ -531,6 +316,7 @@ namespace Salvo
                         }
                         buttonDic[text].BackColor = System.Drawing.Color.LightGreen;
                         shipList.Add(buttonDic[text]);
+                        ship2List.Add(buttonDic[text]);
 
                         byte[] asciiByte = Encoding.ASCII.GetBytes(text);
                         asciiByte[1] += 1;
@@ -548,6 +334,7 @@ namespace Salvo
 
                         buttonDic[text].BackColor = System.Drawing.Color.LightGreen;
                         shipList.Add(buttonDic[text]);
+                        ship2List.Add(buttonDic[text]);
 
                         byte[] asciiByte = Encoding.ASCII.GetBytes(text);
                         asciiByte[0] += 1;
@@ -580,6 +367,7 @@ namespace Salvo
                         }
                         buttonDic[text].BackColor = System.Drawing.Color.LightGreen;
                         shipList.Add(buttonDic[text]);
+                        ship3List.Add(buttonDic[text]);
 
                         byte[] asciiByte = Encoding.ASCII.GetBytes(text);
                         asciiByte[1] += 1;
@@ -596,6 +384,7 @@ namespace Salvo
 
                         buttonDic[text].BackColor = System.Drawing.Color.LightGreen;
                         shipList.Add(buttonDic[text]);
+                        ship3List.Add(buttonDic[text]);
 
                         byte[] asciiByte = Encoding.ASCII.GetBytes(text);
                         asciiByte[0] += 1;
@@ -627,6 +416,7 @@ namespace Salvo
                         }
                         buttonDic[text].BackColor = System.Drawing.Color.LightGreen;
                         shipList.Add(buttonDic[text]);
+                        ship4List.Add(buttonDic[text]);
 
                         byte[] asciiByte = Encoding.ASCII.GetBytes(text);
                         asciiByte[1] += 1;
@@ -642,6 +432,7 @@ namespace Salvo
 
                         buttonDic[text].BackColor = System.Drawing.Color.LightGreen;
                         shipList.Add(buttonDic[text]);
+                        ship4List.Add(buttonDic[text]);
 
                         byte[] asciiByte = Encoding.ASCII.GetBytes(text);
                         asciiByte[0] += 1;
@@ -674,6 +465,7 @@ namespace Salvo
                         }
                         buttonDic[text].BackColor = System.Drawing.Color.LightGreen;
                         shipList.Add(buttonDic[text]);
+                        ship5List.Add(buttonDic[text]);
 
                         byte[] asciiByte = Encoding.ASCII.GetBytes(text);
                         asciiByte[1] += 1;
@@ -689,6 +481,7 @@ namespace Salvo
 
                         buttonDic[text].BackColor = System.Drawing.Color.LightGreen;
                         shipList.Add(buttonDic[text]);
+                        ship5List.Add(buttonDic[text]);
 
                         byte[] asciiByte = Encoding.ASCII.GetBytes(text);
                         asciiByte[0] += 1;
@@ -716,7 +509,7 @@ namespace Salvo
                     }
                     else
                     {
-                        state = gameState.OppenentTurn;
+                        state = gameState.OpponentTurn;
                         MessageBox.Show("YourSecond.");
                         dataSender("YourFirst");
                     }
@@ -792,7 +585,12 @@ namespace Salvo
                     {
                         state = gameState.YourTurn;
                     }
-
+                    if(TextReceived == "win")
+                    {
+                        MessageBox.Show("You Lose!");
+                        Application.Exit();
+                        
+                    }
                     switch (state)
                     {
                         case gameState.ReadyToPlay:
@@ -804,7 +602,7 @@ namespace Salvo
 
                             if (TextReceived == "YourSecond")
                             {
-                                state = gameState.OppenentTurn;
+                                state = gameState.OpponentTurn;
                                 MessageBox.Show("Your second!");
                             }
                             break;
@@ -815,7 +613,7 @@ namespace Salvo
                                 MessageBox.Show("Hit!");
                                 lastShot.BackColor = Color.Red;
                                 dataSender("YourTurn");
-                                state = gameState.OppenentTurn;
+                                state = gameState.OpponentTurn;
                             }
 
                             if (TextReceived == "miss")
@@ -823,15 +621,82 @@ namespace Salvo
                                 MessageBox.Show("Miss!");
                                 lastShot.BackColor = Color.LightBlue;
                                 dataSender("YourTurn");
-                                state = gameState.OppenentTurn;
+                                state = gameState.OpponentTurn;
+                            }
+                            if(TextReceived == "hitsunk")
+                            {
+                                MessageBox.Show("Sunk!");
+                                lastShot.BackColor = Color.Red;
+                                
+                                score++;
+                                if(score == 4)
+                                {
+                                    dataSender("win");
+                                    state = gameState.End;
+                                    MessageBox.Show("You Win!");
+                                    Application.Exit();
+                                }
+                                else
+                                {
+                                    dataSender("YourTurn");
+                                    state = gameState.OpponentTurn;
+                                }
                             }
                             break;
 
-                        case gameState.OppenentTurn:
+                        case gameState.OpponentTurn:
                             Button b = new Button();
                             buttonDic.TryGetValue(TextReceived, out b);
                             if (shipList.Contains(b))
                             {
+                                if(ship2List.Contains(b))
+                                {
+                                    ship2List.Remove(b);
+                                    if(ship2List.Count == 0)
+                                    {
+                                        b.BackColor = Color.Red;
+                                        dataSender("hitsunk");
+                                        MessageBox.Show("Sunk");
+                                        break;
+                                    }
+                                    
+                                }
+                                else if (ship3List.Contains(b))
+                                {
+                                    ship3List.Remove(b);
+                                    if (ship3List.Count == 0)
+                                    {
+                                        b.BackColor = Color.Red;
+                                        dataSender("hitsunk");
+                                        MessageBox.Show("Sunk");
+                                        break;
+                                    }
+
+                                }
+                                else if (ship4List.Contains(b))
+                                {
+                                    ship4List.Remove(b);
+                                    if (ship4List.Count == 0)
+                                    {
+                                        b.BackColor = Color.Red;
+                                        dataSender("hitsunk");
+                                        MessageBox.Show("Sunk");
+                                        break;
+                                    }
+
+                                }
+                                else if (ship5List.Contains(b))
+                                {
+                                    ship5List.Remove(b);
+                                    if (ship5List.Count == 0)
+                                    {
+                                        b.BackColor = Color.Red;
+                                        dataSender("hitsunk");
+                                        MessageBox.Show("Sunk");
+                                        break;
+                                    }
+
+                                }
                                 b.BackColor = Color.Red;
                                 MessageBox.Show("Hit");
                                 dataSender("hit");
@@ -843,6 +708,7 @@ namespace Salvo
                                 dataSender("miss");
                             }
                             break;
+                        
                     }
                 }
                 catch(Exception ex)
