@@ -12,7 +12,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.IO;
 
-public enum gameState { Start, PlacingShips, ReadyToPlay, YourTurn, OpponentTurn, End };
+public enum gameState { Start, PlacingShips, ReadyToPlay, YourTurn, OpponentTurn};
 
 namespace Salvo
 {
@@ -510,13 +510,13 @@ namespace Salvo
                     else
                     {
                         state = gameState.OpponentTurn;
-                        MessageBox.Show("YourSecond.");
+                        MessageBox.Show("Your Second.");
                         dataSender("YourFirst");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Once your opponent is ready, the game will start!");
+                    messageBoard.Text = "Once your opponent is ready, the game will start!";
                 }
             }
 
@@ -542,7 +542,7 @@ namespace Salvo
                 Button button = sender as Button;
                 if (fireList.Contains(button))
                 {
-                    MessageBox.Show("You have alredy fired there!");
+                    messageBoard.Text = "You have alredy fired there!";
                     return;
                 }
 
@@ -556,7 +556,7 @@ namespace Salvo
             }
             else
             {
-                MessageBox.Show("It is not your turn.");
+                messageBoard.Text = "It is not your turn.";
             }
         }
 
@@ -632,7 +632,6 @@ namespace Salvo
                                 if(score == 4)
                                 {
                                     dataSender("win");
-                                    state = gameState.End;
                                     MessageBox.Show("You Win!");
                                     Application.Exit();
                                 }
@@ -698,6 +697,7 @@ namespace Salvo
 
                                 }
                                 b.BackColor = Color.Red;
+                               
                                 MessageBox.Show("Hit");
                                 dataSender("hit");
                             }

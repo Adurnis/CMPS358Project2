@@ -234,6 +234,7 @@
             this.horiz = new System.Windows.Forms.RadioButton();
             this.opponentLabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // I10
@@ -2291,11 +2292,21 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_doWork);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(530, 344);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 305;
+            this.label1.Text = "label1";
+            // 
             // SalvoGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 741);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.opponentLabel);
             this.Controls.Add(this.playerLabel);
             this.Controls.Add(this.messageBoard);
@@ -2716,5 +2727,6 @@
         private System.Windows.Forms.RadioButton horiz;
         private System.Windows.Forms.Label opponentLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label1;
     }
 }
