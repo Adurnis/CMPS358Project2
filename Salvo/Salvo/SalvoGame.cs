@@ -473,7 +473,7 @@ namespace Salvo
                 writer = new StreamWriter(client.GetStream());
                 writer.AutoFlush = true;
                 state = gameState.PlacingShips;
-
+                MessageBox.Show("Connected!");
                 backgroundWorker1.RunWorkerAsync();     //start receiving data in the background
             }
             
@@ -495,8 +495,6 @@ namespace Salvo
                         backgroundWorker1.RunWorkerAsync(); //start receiving data in the background
                         this.Text = "Salvo Game Client";
                         state = gameState.PlacingShips;
-                        dataSender("Connected!");
-
                     }
                 }
                 catch (Exception ex)
@@ -784,22 +782,7 @@ namespace Salvo
                 try
                 {
                     TextReceived = reader.ReadLine();
-
-                    if (state == gameState.ReadyToPlay)
-                    {
-                        if(TextReceived == "YourFirst")
-                        {
-                            state = gameState.YourTurn;
-                            MessageBox.Show("Your first!");
-                        }
-
-                        if(TextReceived == "YourSecond")
-                        {
-                            state = gameState.OppenentTurn;
-                            MessageBox.Show("Your second!");
-                        }
-                    }
-
+                    
                     if(TextReceived == "readyToPlay")
                     {
                         opponentReady = true;
@@ -808,51 +791,64 @@ namespace Salvo
                     if (TextReceived == "YourTurn")
                     {
                         state = gameState.YourTurn;
-                        return;
                     }
 
-                    if (state == gameState.YourTurn)
+                    switch (state)
                     {
-                        if (TextReceived == "hit")
-                        {
-                            MessageBox.Show("Hit!");
-                            lastShot.BackColor = Color.Red;
-                            dataSender("YourTurn");
-                            state = gameState.OppenentTurn;
-                            return;
-                        }
+                        case gameState.ReadyToPlay:
+                            if (TextReceived == "YourFirst")
+                            {
+                                state = gameState.YourTurn;
+                                MessageBox.Show("Your first!");
+                            }
 
-                        if (TextReceived == "miss")
-                        {
-                            MessageBox.Show("Miss!");
-                            lastShot.BackColor = Color.LightBlue;
-                            dataSender("YourTurn");
-                            state = gameState.OppenentTurn;
-                            return;
-                        }
-                    }
+                            if (TextReceived == "YourSecond")
+                            {
+                                state = gameState.OppenentTurn;
+                                MessageBox.Show("Your second!");
+                            }
+                            break;
 
-                    if (state == gameState.OppenentTurn)
-                    {
-                        Button b = new Button();
-                        buttonDic.TryGetValue(TextReceived, out b);
-                        if (shipList.Contains(b))
-                        {
-                            b.BackColor = Color.Red;
-                            dataSender("hit");
-                        }
-                        else
-                        {
-                            b.BackColor = Color.LightBlue;
-                            dataSender("miss");
-                        }
+                        case gameState.YourTurn:
+                            if (TextReceived == "hit")
+                            {
+                                MessageBox.Show("Hit!");
+                                lastShot.BackColor = Color.Red;
+                                dataSender("YourTurn");
+                                state = gameState.OppenentTurn;
+                            }
+
+                            if (TextReceived == "miss")
+                            {
+                                MessageBox.Show("Miss!");
+                                lastShot.BackColor = Color.LightBlue;
+                                dataSender("YourTurn");
+                                state = gameState.OppenentTurn;
+                            }
+                            break;
+
+                        case gameState.OppenentTurn:
+                            Button b = new Button();
+                            buttonDic.TryGetValue(TextReceived, out b);
+                            if (shipList.Contains(b))
+                            {
+                                b.BackColor = Color.Red;
+                                MessageBox.Show("Hit");
+                                dataSender("hit");
+                            }
+                            else
+                            {
+                                b.BackColor = Color.LightBlue;
+                                MessageBox.Show("Miss");
+                                dataSender("miss");
+                            }
+                            break;
                     }
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-
             }
         }
     }
