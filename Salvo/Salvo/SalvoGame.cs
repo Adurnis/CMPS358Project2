@@ -294,8 +294,8 @@ namespace Salvo
         {
             Button button = (Button)sender;
 
-            string text = button.Text;
-
+            string text = button.Text, savedText = button.Text;
+            
 
 
             if (placingShip2)
@@ -304,6 +304,7 @@ namespace Salvo
                 {
                     if (text.Length == 3)
                         return;
+                    
                     for (int i = 0; i < 2; i++)
                     {
                         // : is the ascii code right after 9
@@ -355,6 +356,18 @@ namespace Salvo
                 {
                     if (text.Length == 3 || text[1] == '9')
                         return;
+                    for (int i = 0; i < 3; i++ )
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        if (shipList.Contains(buttonDic[text]))
+                            return;
+                        byte[] asciiByte = Encoding.ASCII.GetBytes(text);
+                        asciiByte[1] += 1;
+                        text = Encoding.ASCII.GetString(asciiByte);
+                        
+                    }
+                        text = savedText;
                     for (int i = 0; i < 3; i++)
                     {
 
@@ -377,7 +390,18 @@ namespace Salvo
                 else
                 {
                     if (text[0] == 'J' || text[0] == 'I')
-                        return;
+                            return;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (shipList.Contains(buttonDic[text]))
+                            return;
+                        byte[] asciiByte = Encoding.ASCII.GetBytes(text);
+                        asciiByte[0] += 1;
+                        text = Encoding.ASCII.GetString(asciiByte);
+                        
+
+                    }
+                    text = savedText;
                     for (int i = 0; i < 3; i++)
                     {
 
@@ -405,6 +429,19 @@ namespace Salvo
                 {
                     if (text.Length == 3 || text[1] == '9' || text[1] == '8')
                         return;
+                    
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        if (shipList.Contains(buttonDic[text]))
+                            return;
+                        byte[] asciiByte = Encoding.ASCII.GetBytes(text);
+                        asciiByte[1] += 1;
+                        text = Encoding.ASCII.GetString(asciiByte);
+                        
+                    }
+                    text = savedText;
                     for (int i = 0; i < 4; i++)
                     {
                         if (text[1] == ':')
@@ -427,6 +464,17 @@ namespace Salvo
                 {
                     if (text[0] == 'J' || text[0] == 'I' || text[0] == 'H')
                         return;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (shipList.Contains(buttonDic[text]))
+                            return;
+                        byte[] asciiByte = Encoding.ASCII.GetBytes(text);
+                        asciiByte[0] += 1;
+                        text = Encoding.ASCII.GetString(asciiByte);
+                        
+
+                    }
+                    text = savedText;
                     for (int i = 0; i < 4; i++)
                     {
 
@@ -454,6 +502,19 @@ namespace Salvo
                 {
                     if (text.Length == 3 || text[1] == '9' || text[1] == '8' || text[1] == '7')
                         return;
+                    
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        if (shipList.Contains(buttonDic[text]))
+                            return;
+                        byte[] asciiByte = Encoding.ASCII.GetBytes(text);
+                        asciiByte[1] += 1;
+                        text = Encoding.ASCII.GetString(asciiByte);
+                        
+                    }
+                    text = savedText;
                     for (int i = 0; i < 5; i++)
                     {
                         if (text[1] == ':')
@@ -476,6 +537,17 @@ namespace Salvo
                 {
                     if (text[0] == 'J' || text[0] == 'I' || text[0] == 'H' || text[0] == 'G')
                         return;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (shipList.Contains(buttonDic[text]))
+                            return;
+                        byte[] asciiByte = Encoding.ASCII.GetBytes(text);
+                        asciiByte[0] += 1;
+                        text = Encoding.ASCII.GetString(asciiByte);
+                        
+
+                    }
+                    text = savedText;
                     for (int i = 0; i < 5; i++)
                     {
 
