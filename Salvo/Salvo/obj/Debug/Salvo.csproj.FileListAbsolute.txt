@@ -8,3 +8,13 @@ C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.csp
 C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.exe
 C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.pdb
 C:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.Form1.resources
+A:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\bin\Debug\Salvo.exe.config
+A:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.exe
+A:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.pdb
+A:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\bin\Debug\Salvo.exe
+A:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\bin\Debug\Salvo.pdb
+A:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.csprojResolveAssemblyReference.cache
+A:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.Form1.resources
+A:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.Properties.Resources.resources
+A:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.SalvoGame.resources
+A:\Users\Andrew\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.csproj.GenerateResource.Cache

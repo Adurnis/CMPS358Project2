@@ -21,6 +21,7 @@ namespace Salvo
 
         bool placingShip2 = true, placingShip3 = false, placingShip4 = false, placingShip5 = false;
         bool vertical = false;
+        bool opponentReady = false;
         Dictionary<string, Button> buttonDic = new Dictionary<string, Button>();
         Dictionary<Button, string> opponentDic = new Dictionary<Button, string>();
         List<Button> fireList = new List<Button>();
@@ -697,6 +698,31 @@ namespace Salvo
                 }
                 placingShip5 = false;
                 messageBoard.Text = "";
+                state = gameState.ReadyToPlay;
+                dataSender("readyToPlay");
+
+                if (opponentReady)
+                {
+                    Random rand = new Random();
+                    int randInt = rand.Next(100);
+
+                    if (randInt % 2 == 0)
+                    {
+                        state = gameState.YourTurn;
+                        MessageBox.Show("Your First!");
+                        dataSender("YourSecond");
+                    }
+                    else
+                    {
+                        state = gameState.OppenentTurn;
+                        MessageBox.Show("YourSecond.");
+                        dataSender("YourFirst");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Once your opponent is ready, the game will start!");
+                }
             }
 
         }
@@ -754,6 +780,26 @@ namespace Salvo
                 try
                 {
                     TextReceived = reader.ReadLine();
+
+                    if (state == gameState.ReadyToPlay)
+                    {
+                        if(TextReceived == "YourFirst")
+                        {
+                            state = gameState.YourTurn;
+                            MessageBox.Show("Your first!");
+                        }
+
+                        if(TextReceived == "YourSecond")
+                        {
+                            state = gameState.OppenentTurn;
+                            MessageBox.Show("Your second!");
+                        }
+                    }
+
+                    if(TextReceived == "readyToPlay")
+                    {
+                        opponentReady = true;
+                    }
 
                     if (TextReceived == "YourTurn")
                     {
