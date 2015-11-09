@@ -472,6 +472,7 @@ namespace Salvo
                 reader = new StreamReader(client.GetStream());
                 writer = new StreamWriter(client.GetStream());
                 writer.AutoFlush = true;
+                state = gameState.PlacingShips;
 
                 backgroundWorker1.RunWorkerAsync();     //start receiving data in the background
             }
@@ -493,6 +494,9 @@ namespace Salvo
 
                         backgroundWorker1.RunWorkerAsync(); //start receiving data in the background
                         this.Text = "Salvo Game Client";
+                        state = gameState.PlacingShips;
+                        dataSender("Connected!");
+
                     }
                 }
                 catch (Exception ex)
@@ -756,8 +760,8 @@ namespace Salvo
                 //get the string to send to the opponent 
                 string textToSend = opponentDic[button];
                 //call the function to send information to the opponent
+                lastShot = button;  //what needs to be marked as a hit or miss
                 dataSender(textToSend);
-                lastShot = button;
             }
             else
             {
@@ -804,7 +808,6 @@ namespace Salvo
                     if (TextReceived == "YourTurn")
                     {
                         state = gameState.YourTurn;
-                        TextReceived = "";
                         return;
                     }
 
@@ -843,7 +846,6 @@ namespace Salvo
                             b.BackColor = Color.LightBlue;
                             dataSender("miss");
                         }
-                        state = gameState.YourTurn;
                     }
                 }
                 catch(Exception ex)
