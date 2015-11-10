@@ -48,3 +48,13 @@ C:\Users\pmh7685\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.Fo
 C:\Users\pmh7685\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.Properties.Resources.resources
 C:\Users\pmh7685\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.SalvoGame.resources
 C:\Users\pmh7685\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.csproj.GenerateResource.Cache
+C:\Users\Phil\Documents\GitHub\CMPS358Project2\Salvo\Salvo\bin\Debug\Salvo.exe.config
+C:\Users\Phil\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.exe
+C:\Users\Phil\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.pdb
+C:\Users\Phil\Documents\GitHub\CMPS358Project2\Salvo\Salvo\bin\Debug\Salvo.exe
+C:\Users\Phil\Documents\GitHub\CMPS358Project2\Salvo\Salvo\bin\Debug\Salvo.pdb
+C:\Users\Phil\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.csprojResolveAssemblyReference.cache
+C:\Users\Phil\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.Form1.resources
+C:\Users\Phil\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.Properties.Resources.resources
+C:\Users\Phil\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.SalvoGame.resources
+C:\Users\Phil\Documents\GitHub\CMPS358Project2\Salvo\Salvo\obj\Debug\Salvo.csproj.GenerateResource.Cache
