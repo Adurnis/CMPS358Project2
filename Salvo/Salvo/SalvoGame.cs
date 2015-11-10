@@ -36,6 +36,7 @@ namespace Salvo
         private StreamWriter writer;
         private String TextReceived;
         Button lastShot;
+        Color originalColor;
         int score = 0;
 
         //initializer function to start the game
@@ -789,5 +790,334 @@ namespace Salvo
                 }
             }
         }
+
+        private void mouseEnterPlaceShips(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            string text = b.Text;
+            byte[] byteArr;
+            if (vertical)
+            {
+                if (placingShip2)
+                {
+                    if (text.Length == 3)
+                        text = text.Replace("10", "9");
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        buttonDic[text].BackColor = Color.LightGreen;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[1] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+
+
+                    }
+                }
+                else if(placingShip3)
+                {
+                    if (text.Length == 3 || text[1] == '9')
+                        text = text.Replace("10", "8").Replace("9", "8");
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        buttonDic[text].BackColor = Color.LightGreen;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[1] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+
+
+                    }
+                }
+                else if(placingShip4)
+                {
+                    if (text.Length == 3 || text[1] == '9' || text[1] == '8')
+                        text = text.Replace("10", "7").Replace("9", "7").Replace("8", "7");
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        buttonDic[text].BackColor = Color.LightGreen;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[1] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+
+
+                    }
+                }
+
+                else if(placingShip5)
+                {
+                    if (text.Length == 3 || text[1] == '9' || text[1] == '8' || text[1] == '7')
+                        text = text.Replace("10", "6").Replace("9", "6").Replace("8", "6").Replace("7", "6");
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        buttonDic[text].BackColor = Color.LightGreen;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[1] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+
+
+                    }
+                }
+                
+            }
+            else
+            {
+                if (placingShip2)
+                {
+                    if (text[0] == 'J')
+                        text = text.Replace("J", "I");
+                    for (int i = 0; i < 2; i++)
+                    {
+                        buttonDic[text].BackColor = Color.LightGreen;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[0] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+                        
+
+
+                    }
+                }
+                if (placingShip3)
+                {
+                    if (text[0] == 'J' || text[0] == 'I')
+                        text = text.Replace("J", "H").Replace("I", "H");
+                    for (int i = 0; i < 3; i++)
+                    {
+                        buttonDic[text].BackColor = Color.LightGreen;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[0] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+                        
+
+
+                    }
+                }
+                if (placingShip4)
+                {
+                    if (text[0] == 'J' || text[0] == 'I' || text[0] == 'H')
+                        text = text.Replace("J", "G").Replace("I", "G").Replace("H", "G");
+                    for (int i = 0; i < 4; i++)
+                    {
+                        buttonDic[text].BackColor = Color.LightGreen;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[0] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+                        
+
+
+                    }
+                }
+                else if(placingShip5)
+                {
+                    if (text[0] == 'J' || text[0] == 'I' || text[0] == 'H' || text[0] == 'G')
+                        text = text.Replace("J", "F").Replace("I", "F").Replace("H", "F").Replace("G", "F");
+                    for (int i = 0; i < 5; i++)
+                    {
+                        buttonDic[text].BackColor = Color.LightGreen;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[0] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+                        
+
+
+                    }
+                }
+            }
+        }
+
+       
+
+        private void mouseExitPlaceShips(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            string text = b.Text;
+            byte[] byteArr;
+            if (vertical)
+            {
+                if (placingShip2)
+                {
+                    if (text.Length == 3)
+                        text = text.Replace("10", "9");
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        if(!shipList.Contains(buttonDic[text]))
+                            buttonDic[text].BackColor = Color.White;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[1] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+
+
+                    }
+                }
+                else if (placingShip3)
+                {
+                    if (text.Length == 3 || text[1] == '9')
+                        text = text.Replace("10", "8").Replace("9", "8");
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        if (!shipList.Contains(buttonDic[text]))
+                            buttonDic[text].BackColor = Color.White;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[1] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+
+
+                    }
+                }
+                else if (placingShip4)
+                {
+                    if (text.Length == 3 || text[1] == '9' || text[1] == '8')
+                        text = text.Replace("10", "7").Replace("9", "7").Replace("8", "7");
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        if (!shipList.Contains(buttonDic[text]))
+                            buttonDic[text].BackColor = Color.White;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[1] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+
+
+                    }
+                }
+
+                else if (placingShip5)
+                {
+                    if (text.Length == 3 || text[1] == '9' || text[1] == '8' || text[1] == '7')
+                        text = text.Replace("10", "6").Replace("9", "6").Replace("8", "6").Replace("7", "6");
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (text[1] == ':')
+                            text = text.Replace(":", "10");
+                        if (!shipList.Contains(buttonDic[text]))
+                            buttonDic[text].BackColor = Color.White;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[1] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+                        
+
+
+                    }
+                }
+
+            }
+            else
+            {
+                if (placingShip2)
+                {
+                    if (text[0] == 'J')
+                        text = text.Replace("J", "I");
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if (!shipList.Contains(buttonDic[text]))
+                            buttonDic[text].BackColor = Color.White;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[0] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+
+                        
+
+
+                    }
+                }
+                if (placingShip3)
+                {
+                    if (text[0] == 'J' || text[0] == 'I')
+                        text = text.Replace("J", "H").Replace("I", "H");
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (!shipList.Contains(buttonDic[text]))
+                            buttonDic[text].BackColor = Color.White;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[0] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+
+                        
+
+
+                    }
+                }
+                if (placingShip4)
+                {
+                    if (text[0] == 'J' || text[0] == 'I' || text[0] == 'H')
+                        text = text.Replace("J", "G").Replace("I", "G").Replace("H", "G");
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (!shipList.Contains(buttonDic[text]))
+                            buttonDic[text].BackColor = Color.White;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[0] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+
+                        
+
+
+                    }
+                }
+                else if (placingShip5)
+                {
+                    if (text[0] == 'J' || text[0] == 'I' || text[0] == 'H' || text[0] == 'G')
+                        text = text.Replace("J", "F").Replace("I", "F").Replace("H", "F").Replace("G", "F");
+                    for (int i = 0; i < 5; i++)
+                    {
+
+                        if (!shipList.Contains(buttonDic[text]))
+                            buttonDic[text].BackColor = Color.White;
+                        byteArr = Encoding.ASCII.GetBytes(text);
+                        byteArr[0] += 1;
+                        text = Encoding.ASCII.GetString(byteArr);
+
+                       
+
+
+                    }
+                }
+            }
+        }
+
+        void mouseEnterFire(object sender, EventArgs e)
+        {
+            if (state != gameState.YourTurn)
+                return;
+                
+            Button b = (Button)sender;
+            originalColor = b.BackColor;
+
+            b.BackColor = Color.Red;
+
+
+        }
+
+        void mouseExitFire(object sender, EventArgs e)
+        {
+            if (state != gameState.YourTurn)
+                return;
+
+            Button b = (Button)sender;
+            b.BackColor = originalColor;
+        }
+
+
     }
 }
