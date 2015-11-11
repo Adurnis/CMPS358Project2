@@ -304,8 +304,8 @@ namespace Salvo
                 if (vertical)
                 {
                     if (text.Length == 3)
-                        return;
-                    
+                        text = text.Replace("10", "9");
+                    savedText = text;
                     for (int i = 0; i < 2; i++)
                     {
                         // : is the ascii code right after 9
@@ -330,7 +330,8 @@ namespace Salvo
                 else
                 {
                     if (text[0] == 'J')
-                        return;
+                        text = text.Replace("J", "I");
+                    savedText = text;
                     for (int i = 0; i < 2; i++)
                     {
 
@@ -356,7 +357,8 @@ namespace Salvo
                 if (vertical)
                 {
                     if (text.Length == 3 || text[1] == '9')
-                        return;
+                        text = text.Replace("10", "8").Replace("9", "8");
+                    savedText = text;
                     for (int i = 0; i < 3; i++ )
                     {
                         if (text[1] == ':')
@@ -391,7 +393,8 @@ namespace Salvo
                 else
                 {
                     if (text[0] == 'J' || text[0] == 'I')
-                            return;
+                        text = text.Replace("J", "H").Replace("I", "H");
+                    savedText = text;
                     for (int i = 0; i < 3; i++)
                     {
                         if (shipList.Contains(buttonDic[text]))
@@ -429,7 +432,8 @@ namespace Salvo
                 if (vertical)
                 {
                     if (text.Length == 3 || text[1] == '9' || text[1] == '8')
-                        return;
+                        text = text.Replace("10", "7").Replace("9", "7").Replace("8", "7");
+                    savedText = text;
                     
                     for (int i = 0; i < 4; i++)
                     {
@@ -464,7 +468,8 @@ namespace Salvo
                 else
                 {
                     if (text[0] == 'J' || text[0] == 'I' || text[0] == 'H')
-                        return;
+                        text = text.Replace("J", "G").Replace("I", "G").Replace("H", "G");
+                    savedText = text;
                     for (int i = 0; i < 4; i++)
                     {
                         if (shipList.Contains(buttonDic[text]))
@@ -502,7 +507,8 @@ namespace Salvo
                 if (vertical)
                 {
                     if (text.Length == 3 || text[1] == '9' || text[1] == '8' || text[1] == '7')
-                        return;
+                        text = text.Replace("10", "6").Replace("9", "6").Replace("8", "6").Replace("7", "6");
+                    savedText = text;
                     
                     for (int i = 0; i < 5; i++)
                     {
@@ -537,7 +543,8 @@ namespace Salvo
                 else
                 {
                     if (text[0] == 'J' || text[0] == 'I' || text[0] == 'H' || text[0] == 'G')
-                        return;
+                        text = text.Replace("J", "F").Replace("I", "F").Replace("H", "F").Replace("G", "F");
+                    savedText = text;
                     for (int i = 0; i < 5; i++)
                     {
                         if (shipList.Contains(buttonDic[text]))
