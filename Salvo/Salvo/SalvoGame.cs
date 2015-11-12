@@ -576,6 +576,10 @@ namespace Salvo
                 state = gameState.ReadyToPlay;
                 dataSender("readyToPlay");
 
+                messageBoard.Visible = false;
+                horiz.Visible = false;
+                verti.Visible = false;
+
                 if (opponentReady)
                 {
                     Random rand = new Random();

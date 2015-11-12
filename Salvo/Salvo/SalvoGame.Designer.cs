@@ -2862,16 +2862,17 @@
             // messageBoard
             // 
             this.messageBoard.Enabled = false;
-            this.messageBoard.Location = new System.Drawing.Point(392, 408);
+            this.messageBoard.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.messageBoard.Location = new System.Drawing.Point(392, 419);
             this.messageBoard.Name = "messageBoard";
-            this.messageBoard.Size = new System.Drawing.Size(128, 35);
+            this.messageBoard.Size = new System.Drawing.Size(80, 29);
             this.messageBoard.TabIndex = 302;
             this.messageBoard.Text = "Place Ship 2";
             // 
             // verti
             // 
             this.verti.AutoSize = true;
-            this.verti.Location = new System.Drawing.Point(395, 457);
+            this.verti.Location = new System.Drawing.Point(478, 431);
             this.verti.Name = "verti";
             this.verti.Size = new System.Drawing.Size(59, 17);
             this.verti.TabIndex = 301;
@@ -2883,7 +2884,7 @@
             // 
             this.horiz.AutoSize = true;
             this.horiz.Checked = true;
-            this.horiz.Location = new System.Drawing.Point(395, 426);
+            this.horiz.Location = new System.Drawing.Point(478, 400);
             this.horiz.Name = "horiz";
             this.horiz.Size = new System.Drawing.Size(70, 17);
             this.horiz.TabIndex = 300;
@@ -3062,6 +3063,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 741);
+            this.Controls.Add(this.messageBoard);
             this.Controls.Add(this.ship5_4);
             this.Controls.Add(this.ship5_5);
             this.Controls.Add(this.ship5_3);
@@ -3280,7 +3282,6 @@
             this.Controls.Add(this.A3);
             this.Controls.Add(this.A2);
             this.Controls.Add(this.A1);
-            this.Controls.Add(this.messageBoard);
             this.Name = "SalvoGame";
             this.Text = "Salvo Game";
             this.ResumeLayout(false);
