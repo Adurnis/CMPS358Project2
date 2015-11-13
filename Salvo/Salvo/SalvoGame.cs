@@ -1,4 +1,14 @@
-﻿using System;
+﻿//Authors: Andrew Wise & Phillip Huval 
+//CLIDs: ajw8885 & pmh7685
+//Class: CMPS 358 
+//Assignment: Project 2 Salvo
+//Due Date: 11-15-15
+//Description: Automate the game Salvo so that it can be played across a network on two separate computers via a graphical 
+//user interface. The game is implemented so that one user's software is the server that keeps track of the players progress. 
+//The client connects to the server or host player by entering their ip address. 
+//Certification of Authenticity: We certify that the code in this project is entriely our own with no outside help received. 
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -782,14 +792,14 @@ namespace Salvo
 
                                 }
                                 b.BackColor = Color.Red;
-                                MessageBox.Show("Hit");
                                 dataSender("hit");
+                                MessageBox.Show("Hit");
                             }
                             else
                             {
                                 b.BackColor = Color.LightBlue;
-                                MessageBox.Show("Miss");
                                 dataSender("miss");
+                                MessageBox.Show("Miss");
                             }
                             break;
                         
@@ -947,9 +957,7 @@ namespace Salvo
                     }
                 }
             }
-        }
-
-       
+        }  
 
         private void mouseExitPlaceShips(object sender, EventArgs e)
         {
@@ -1111,11 +1119,14 @@ namespace Salvo
         {
             if (state != gameState.YourTurn)
                 return;
+            
                 
             Button b = (Button)sender;
+            if (fireList.Contains(b))
+                return;
             originalColor = b.BackColor;
 
-            b.BackColor = Color.Red;
+            b.BackColor = Color.OrangeRed;
 
 
         }
@@ -1124,11 +1135,11 @@ namespace Salvo
         {
             if (state != gameState.YourTurn)
                 return;
-
+            
             Button b = (Button)sender;
+            if (fireList.Contains(b))
+                return;
             b.BackColor = originalColor;
         }
-
-
     }
 }
