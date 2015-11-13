@@ -234,20 +234,6 @@
             this.horiz = new System.Windows.Forms.RadioButton();
             this.opponentLabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.ship2_1 = new System.Windows.Forms.Button();
-            this.ship2_2 = new System.Windows.Forms.Button();
-            this.ship3_2 = new System.Windows.Forms.Button();
-            this.ship3_3 = new System.Windows.Forms.Button();
-            this.ship3_1 = new System.Windows.Forms.Button();
-            this.ship4_3 = new System.Windows.Forms.Button();
-            this.ship4_4 = new System.Windows.Forms.Button();
-            this.ship4_2 = new System.Windows.Forms.Button();
-            this.ship4_1 = new System.Windows.Forms.Button();
-            this.ship5_4 = new System.Windows.Forms.Button();
-            this.ship5_5 = new System.Windows.Forms.Button();
-            this.ship5_3 = new System.Windows.Forms.Button();
-            this.ship5_2 = new System.Windows.Forms.Button();
-            this.ship5_1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // I10
@@ -2906,178 +2892,12 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_doWork);
             // 
-            // ship2_1
-            // 
-            this.ship2_1.BackColor = System.Drawing.Color.White;
-            this.ship2_1.Enabled = false;
-            this.ship2_1.Location = new System.Drawing.Point(425, 487);
-            this.ship2_1.Name = "ship2_1";
-            this.ship2_1.Size = new System.Drawing.Size(35, 35);
-            this.ship2_1.TabIndex = 320;
-            this.ship2_1.UseVisualStyleBackColor = false;
-            // 
-            // ship2_2
-            // 
-            this.ship2_2.BackColor = System.Drawing.Color.White;
-            this.ship2_2.Enabled = false;
-            this.ship2_2.Location = new System.Drawing.Point(460, 487);
-            this.ship2_2.Name = "ship2_2";
-            this.ship2_2.Size = new System.Drawing.Size(35, 35);
-            this.ship2_2.TabIndex = 319;
-            this.ship2_2.UseVisualStyleBackColor = false;
-            // 
-            // ship3_2
-            // 
-            this.ship3_2.BackColor = System.Drawing.Color.White;
-            this.ship3_2.Enabled = false;
-            this.ship3_2.Location = new System.Drawing.Point(460, 557);
-            this.ship3_2.Name = "ship3_2";
-            this.ship3_2.Size = new System.Drawing.Size(35, 35);
-            this.ship3_2.TabIndex = 323;
-            this.ship3_2.Text = "\r\n";
-            this.ship3_2.UseVisualStyleBackColor = false;
-            // 
-            // ship3_3
-            // 
-            this.ship3_3.BackColor = System.Drawing.Color.White;
-            this.ship3_3.Enabled = false;
-            this.ship3_3.Location = new System.Drawing.Point(495, 557);
-            this.ship3_3.Name = "ship3_3";
-            this.ship3_3.Size = new System.Drawing.Size(35, 35);
-            this.ship3_3.TabIndex = 322;
-            this.ship3_3.Text = "\r\n";
-            this.ship3_3.UseVisualStyleBackColor = false;
-            // 
-            // ship3_1
-            // 
-            this.ship3_1.BackColor = System.Drawing.Color.White;
-            this.ship3_1.Enabled = false;
-            this.ship3_1.Location = new System.Drawing.Point(425, 557);
-            this.ship3_1.Name = "ship3_1";
-            this.ship3_1.Size = new System.Drawing.Size(35, 35);
-            this.ship3_1.TabIndex = 321;
-            this.ship3_1.Text = "\r\n";
-            this.ship3_1.UseVisualStyleBackColor = false;
-            // 
-            // ship4_3
-            // 
-            this.ship4_3.BackColor = System.Drawing.Color.White;
-            this.ship4_3.Enabled = false;
-            this.ship4_3.Location = new System.Drawing.Point(495, 627);
-            this.ship4_3.Name = "ship4_3";
-            this.ship4_3.Size = new System.Drawing.Size(35, 35);
-            this.ship4_3.TabIndex = 327;
-            this.ship4_3.Text = "\r\n";
-            this.ship4_3.UseVisualStyleBackColor = false;
-            // 
-            // ship4_4
-            // 
-            this.ship4_4.BackColor = System.Drawing.Color.White;
-            this.ship4_4.Enabled = false;
-            this.ship4_4.Location = new System.Drawing.Point(530, 627);
-            this.ship4_4.Name = "ship4_4";
-            this.ship4_4.Size = new System.Drawing.Size(35, 35);
-            this.ship4_4.TabIndex = 326;
-            this.ship4_4.Text = "\r\n";
-            this.ship4_4.UseVisualStyleBackColor = false;
-            // 
-            // ship4_2
-            // 
-            this.ship4_2.BackColor = System.Drawing.Color.White;
-            this.ship4_2.Enabled = false;
-            this.ship4_2.Location = new System.Drawing.Point(460, 627);
-            this.ship4_2.Name = "ship4_2";
-            this.ship4_2.Size = new System.Drawing.Size(35, 35);
-            this.ship4_2.TabIndex = 325;
-            this.ship4_2.Text = "\r\n";
-            this.ship4_2.UseVisualStyleBackColor = false;
-            // 
-            // ship4_1
-            // 
-            this.ship4_1.BackColor = System.Drawing.Color.White;
-            this.ship4_1.Enabled = false;
-            this.ship4_1.Location = new System.Drawing.Point(425, 627);
-            this.ship4_1.Name = "ship4_1";
-            this.ship4_1.Size = new System.Drawing.Size(35, 35);
-            this.ship4_1.TabIndex = 324;
-            this.ship4_1.Text = "\r\n";
-            this.ship4_1.UseVisualStyleBackColor = false;
-            // 
-            // ship5_4
-            // 
-            this.ship5_4.BackColor = System.Drawing.Color.White;
-            this.ship5_4.Enabled = false;
-            this.ship5_4.Location = new System.Drawing.Point(530, 697);
-            this.ship5_4.Name = "ship5_4";
-            this.ship5_4.Size = new System.Drawing.Size(35, 35);
-            this.ship5_4.TabIndex = 332;
-            this.ship5_4.Text = "\r\n";
-            this.ship5_4.UseVisualStyleBackColor = false;
-            // 
-            // ship5_5
-            // 
-            this.ship5_5.BackColor = System.Drawing.Color.White;
-            this.ship5_5.Enabled = false;
-            this.ship5_5.Location = new System.Drawing.Point(565, 697);
-            this.ship5_5.Name = "ship5_5";
-            this.ship5_5.Size = new System.Drawing.Size(35, 35);
-            this.ship5_5.TabIndex = 331;
-            this.ship5_5.Text = "\r\n";
-            this.ship5_5.UseVisualStyleBackColor = false;
-            // 
-            // ship5_3
-            // 
-            this.ship5_3.BackColor = System.Drawing.Color.White;
-            this.ship5_3.Enabled = false;
-            this.ship5_3.Location = new System.Drawing.Point(495, 697);
-            this.ship5_3.Name = "ship5_3";
-            this.ship5_3.Size = new System.Drawing.Size(35, 35);
-            this.ship5_3.TabIndex = 330;
-            this.ship5_3.Text = "\r\n";
-            this.ship5_3.UseVisualStyleBackColor = false;
-            // 
-            // ship5_2
-            // 
-            this.ship5_2.BackColor = System.Drawing.Color.White;
-            this.ship5_2.Enabled = false;
-            this.ship5_2.Location = new System.Drawing.Point(460, 697);
-            this.ship5_2.Name = "ship5_2";
-            this.ship5_2.Size = new System.Drawing.Size(35, 35);
-            this.ship5_2.TabIndex = 329;
-            this.ship5_2.Text = "\r\n";
-            this.ship5_2.UseVisualStyleBackColor = false;
-            // 
-            // ship5_1
-            // 
-            this.ship5_1.BackColor = System.Drawing.Color.White;
-            this.ship5_1.Enabled = false;
-            this.ship5_1.Location = new System.Drawing.Point(425, 697);
-            this.ship5_1.Name = "ship5_1";
-            this.ship5_1.Size = new System.Drawing.Size(35, 35);
-            this.ship5_1.TabIndex = 328;
-            this.ship5_1.Text = "\r\n";
-            this.ship5_1.UseVisualStyleBackColor = false;
-            // 
             // SalvoGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 741);
+            this.ClientSize = new System.Drawing.Size(557, 741);
             this.Controls.Add(this.messageBoard);
-            this.Controls.Add(this.ship5_4);
-            this.Controls.Add(this.ship5_5);
-            this.Controls.Add(this.ship5_3);
-            this.Controls.Add(this.ship5_2);
-            this.Controls.Add(this.ship5_1);
-            this.Controls.Add(this.ship4_3);
-            this.Controls.Add(this.ship4_4);
-            this.Controls.Add(this.ship4_2);
-            this.Controls.Add(this.ship4_1);
-            this.Controls.Add(this.ship3_2);
-            this.Controls.Add(this.ship3_3);
-            this.Controls.Add(this.ship3_1);
-            this.Controls.Add(this.ship2_1);
-            this.Controls.Add(this.ship2_2);
             this.Controls.Add(this.opponentLabel);
             this.Controls.Add(this.playerLabel);
             this.Controls.Add(this.verti);
@@ -3497,19 +3317,5 @@
         private System.Windows.Forms.RadioButton horiz;
         private System.Windows.Forms.Label opponentLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button ship2_1;
-        private System.Windows.Forms.Button ship2_2;
-        private System.Windows.Forms.Button ship3_2;
-        private System.Windows.Forms.Button ship3_3;
-        private System.Windows.Forms.Button ship3_1;
-        private System.Windows.Forms.Button ship4_3;
-        private System.Windows.Forms.Button ship4_4;
-        private System.Windows.Forms.Button ship4_2;
-        private System.Windows.Forms.Button ship4_1;
-        private System.Windows.Forms.Button ship5_4;
-        private System.Windows.Forms.Button ship5_5;
-        private System.Windows.Forms.Button ship5_3;
-        private System.Windows.Forms.Button ship5_2;
-        private System.Windows.Forms.Button ship5_1;
     }
 }
