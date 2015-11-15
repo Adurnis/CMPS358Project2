@@ -79,11 +79,7 @@ namespace Salvo
         /// the opponent returns the hit/miss information the location can be marked appropriately
         /// </summary>
         Button lastShot;
-        /// <summary>
-        /// color of a button before the user mouses over it so what when the mouse leaves if it is
-        /// not clicked it can be restored. 
-        /// </summary>
-        Color originalColor;
+        
         /// <summary>
         /// score used to know when a player wins (sinks all the opponents ships) by keeping track of 
         /// how many have been sunk 
@@ -1160,7 +1156,6 @@ namespace Salvo
             //if the user has already fired at the button, dont change the color of it
             if (fireList.Contains(b))
                 return;
-            originalColor = b.BackColor;
 
             b.BackColor = Color.OrangeRed;
         }
@@ -1179,7 +1174,7 @@ namespace Salvo
             Button b = (Button)sender;
             if (fireList.Contains(b))
                 return;
-            b.BackColor = originalColor;
+            b.BackColor = Color.White;
         }
     }
 }
