@@ -28,28 +28,70 @@ namespace Salvo
 {
     public partial class SalvoGame : Form
     {
-
+        /// <summary>
+        /// boolean variables that control when what ship is being placed at the beginning of the game
+        /// </summary>
         bool placingShip2 = true, placingShip3 = false, placingShip4 = false, placingShip5 = false;
+        //controls if the user wants to place the ship vertically or not
         bool vertical = false;
+
+
+        /// <summary>
+        /// is true when your opponent is ready to play the game and you are still placing your ships. will be true  
+        /// for at least one player who once they are ready the game will start. When this is true and the second player
+        /// finished placing their ships the game will start randomly choosing which player goes first
+        /// </summary>
         bool opponentReady = false;
+
         Dictionary<string, Button> buttonDic = new Dictionary<string, Button>();
         Dictionary<Button, string> opponentDic = new Dictionary<Button, string>();
+        
+        /// <summary>
+        /// list of the locations the player has already shot at
+        /// </summary>
         List<Button> fireList = new List<Button>();
+
+        /// <summary>
+        /// list of the locations that contain a player ship. when the opponent sends a shot it is checked to see if it is in 
+        /// the list is checked for the location the opponent shot at to know if it is a hit or a miss.
+        /// </summary>
         List<Button> shipList = new List<Button>();
         List<Button> ship2List = new List<Button>();
         List<Button> ship3List = new List<Button>();
         List<Button> ship4List = new List<Button>();
         List<Button> ship5List = new List<Button>();
+
+        /// <summary>
+        /// the current state the game is in for the player
+        /// </summary>
         gameState state = gameState.Start;
+
+        /// <summary>
+        /// data members for the networking component
+        /// </summary>
         private TcpClient client;
         private StreamReader reader;
         private StreamWriter writer;
         private String TextReceived;
+
+        /// <summary>
+        /// data location to remember where the player choose to shoot at last so that when
+        /// the opponent returns the hit/miss information the location can be marked appropriately
+        /// </summary>
         Button lastShot;
+        /// <summary>
+        /// color of a button before the user mouses over it so what when the mouse leaves if it is
+        /// not clicked it can be restored. 
+        /// </summary>
         Color originalColor;
+        /// <summary>
+        /// score used to know when a player wins (sinks all the opponents ships) by keeping track of 
+        /// how many have been sunk 
+        /// </summary>
         int score = 0;
 
-        //initializer function to start the game
+        //initializer function to start the game sets everything up according to where the player chooses to be 
+        //a client or a host
         public SalvoGame(string type, string ipAddress)
         {
             InitializeComponent();
@@ -300,15 +342,19 @@ namespace Salvo
             }
         }
 
-        //Logic for placing the ships at the start of the game
+        /// <summary>
+        /// Logic for placing the ships at the beginning of the game. The user will choose the location of the "head" 
+        /// of the ship and it will be placed accordingly.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PlaceShips_Clicks(object sender, EventArgs e)
         {
             Button button = (Button)sender;
 
             string text = button.Text, savedText = button.Text;
-            
 
-
+            //placing the ship of length 2
             if (placingShip2)
             {
                 if (vertical)
@@ -361,7 +407,7 @@ namespace Salvo
                 placingShip3 = true;
                 messageBoard.Text = "Place Ship 3";
             }
-
+            //placing the ship of length 3
             else if (placingShip3)
             {
                 if (vertical)
@@ -436,7 +482,7 @@ namespace Salvo
                 placingShip4 = true;
                 messageBoard.Text = "Place Ship 4";
             }
-
+            //placing the ship of length 4
             else if (placingShip4)
             {
                 if (vertical)
@@ -510,7 +556,7 @@ namespace Salvo
                 placingShip5 = true;
                 messageBoard.Text = "Place Ship 5";
             }
-
+            //placing the ship of length 5
             else if (placingShip5)
             {
 
@@ -583,13 +629,17 @@ namespace Salvo
                 }
                 placingShip5 = false;
                 messageBoard.Text = "";
+
+                //all of the ships have been placed. tell your opponent you are ready to play
                 state = gameState.ReadyToPlay;
                 dataSender("readyToPlay");
-
+                //turn off the message board and the radio buttons that control whether or not the 
+                //ship will be vertical or horizontal
                 messageBoard.Visible = false;
                 horiz.Visible = false;
                 verti.Visible = false;
 
+                //if your opponent is ready the game will start, randomly choosing who goes first
                 if (opponentReady)
                 {
                     Random rand = new Random();
@@ -631,9 +681,12 @@ namespace Salvo
         //send the players chosen shot location to their opponent
         private void send_Shot(object sender, EventArgs e)
         {
+            //if it is the players turn let the take a shot, otherwise notify them that
+            //it is not their turn and exit the function;
             if(state == gameState.YourTurn)
             {
                 Button button = sender as Button;
+                //make sure the player has not already fired at the chosen location.
                 if (fireList.Contains(button))
                 {
                     MessageBox.Show("You have alredy fired there!");
@@ -654,6 +707,10 @@ namespace Salvo
             }
         }
 
+        /// <summary>
+        /// this function sends information to the other player across the network in the form of a string.
+        /// </summary>
+        /// <param name="textToSend"></param>
         private async void dataSender(string textToSend)
         {
             //send the information to th opponent. 
@@ -664,29 +721,37 @@ namespace Salvo
         //send and recieve messages from the opponent
         private void backgroundWorker1_doWork(object sender, DoWorkEventArgs e)
         {
+            //while a client is connected, constantly try and recieve information from them
             while (client.Connected)
             {
                 try
                 {
+                    //get the text from the opponent
                     TextReceived = reader.ReadLine();
                     
+                    //consume some input that is not dependent on what the state of the game is
                     if(TextReceived == "readyToPlay")
                     {
                         opponentReady = true;
+                        //continue;
                     }
-
                     if (TextReceived == "YourTurn")
                     {
                         state = gameState.YourTurn;
+                        //continue;
                     }
                     if(TextReceived == "win")
                     {
                         MessageBox.Show("You Lose!");
-                        Application.Exit();
-                        
+                        Application.Exit();    
                     }
+
+                    //expect and consume different input based on what the current game state is. 
+                    //receiving the same string in different states means different things
                     switch (state)
                     {
+                        //if the game is in the state of ready to start play, the only messages that matter are saying 
+                        //who is first and who is second
                         case gameState.ReadyToPlay:
                             if (TextReceived == "YourFirst")
                             {
@@ -701,6 +766,10 @@ namespace Salvo
                             }
                             break;
 
+                        //if the current state is your turn then you are waiting to hear back from your opponent if
+                        //your shot was a hit or a miss. If it is a hit you could have also have sunk a ship which 
+                        // is more information you need to know. Once the info is received from your opponent you 
+                        //the state is changed to the opponents turn and you tell your oppoenent they can take their turn.
                         case gameState.YourTurn:
                             if (TextReceived == "hit")
                             {
@@ -738,6 +807,9 @@ namespace Salvo
                             }
                             break;
 
+                        //if the current state is your opponents turn, you are waiting to here where they are going
+                        //to fire at. Once you recieve the information, you check if it is a hit or a miss, tell 
+                        //your opponent which one it is, and then mark it accordingly on your own screen. 
                         case gameState.OpponentTurn:
                             Button b = new Button();
                             buttonDic.TryGetValue(TextReceived, out b);
@@ -802,7 +874,6 @@ namespace Salvo
                                 MessageBox.Show("Miss");
                             }
                             break;
-                        
                     }
                 }
                 catch(Exception ex)
@@ -812,6 +883,12 @@ namespace Salvo
             }
         }
 
+        /// <summary>
+        /// this function "lights up" the location the current ship will be placed at when the player is
+        /// deciding where to place their ships based upon which button the mouse has entered.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mouseEnterPlaceShips(object sender, EventArgs e)
         {
             Button b = (Button)sender;
@@ -848,9 +925,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[1] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-
-
                     }
                 }
                 else if(placingShip4)
@@ -865,9 +939,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[1] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-
-
                     }
                 }
 
@@ -883,9 +954,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[1] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-
-
                     }
                 }
                 
@@ -902,10 +970,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[0] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-                        
-
-
                     }
                 }
                 if (placingShip3)
@@ -918,10 +982,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[0] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-                        
-
-
                     }
                 }
                 if (placingShip4)
@@ -934,10 +994,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[0] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-                        
-
-
                     }
                 }
                 else if(placingShip5)
@@ -950,15 +1006,17 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[0] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-                        
-
-
                     }
                 }
             }
         }  
 
+        /// <summary>
+        /// this function returns a button to its origional color, if necessary, while the player is deciding
+        /// where to place thier ships. It turns off the "light up" from when the user enters a button with the mouse
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mouseExitPlaceShips(object sender, EventArgs e)
         {
             Button b = (Button)sender;
@@ -979,9 +1037,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[1] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-
-
                     }
                 }
                 else if (placingShip3)
@@ -997,9 +1052,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[1] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-
-
                     }
                 }
                 else if (placingShip4)
@@ -1015,9 +1067,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[1] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-
-
                     }
                 }
 
@@ -1034,9 +1083,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[1] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-                        
-
-
                     }
                 }
 
@@ -1054,10 +1100,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[0] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-
-                        
-
-
                     }
                 }
                 if (placingShip3)
@@ -1071,10 +1113,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[0] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-
-                        
-
-
                     }
                 }
                 if (placingShip4)
@@ -1088,10 +1126,6 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[0] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-
-                        
-
-
                     }
                 }
                 else if (placingShip5)
@@ -1106,31 +1140,37 @@ namespace Salvo
                         byteArr = Encoding.ASCII.GetBytes(text);
                         byteArr[0] += 1;
                         text = Encoding.ASCII.GetString(byteArr);
-
-                       
-
-
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// this function "lights up" a button as the user mouses over it while deciding where to 
+        /// fire at. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void mouseEnterFire(object sender, EventArgs e)
         {
             if (state != gameState.YourTurn)
                 return;
             
-                
             Button b = (Button)sender;
+            //if the user has already fired at the button, dont change the color of it
             if (fireList.Contains(b))
                 return;
             originalColor = b.BackColor;
 
             b.BackColor = Color.OrangeRed;
-
-
         }
 
+        /// <summary>
+        /// this function returns a button to its origional color when the player is deciding which
+        /// location to fire at. gets rid of the "light up" quality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void mouseExitFire(object sender, EventArgs e)
         {
             if (state != gameState.YourTurn)
